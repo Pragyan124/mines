@@ -1,0 +1,36 @@
+body{
+    background-color: #1E2A38;
+}
+
+
+#startGame{
+    background-color: green;
+    color: white;
+    padding:5px;
+
+}
+
+.container{
+   
+    display: inline-grid;
+    grid-template-columns: repeat(5, auto);
+    background-color: #1E2A38;
+    border: 10px solid #344658;
+    border-radius: 10px;
+    padding: 100px;
+    margin: auto;
+    position: relative;
+    top: 50%;
+    transform: translateX(75%);
+}
+
+.container > div {
+    background-color: #344658;
+    border-radius: 10px;
+    margin: 5px;
+    border: 1px solid rgb(11, 5, 5);
+    padding: 50px;
+    font-size: 30px;
+    text-align: center;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5), -2px -2px 5px rgba(255, 255, 255, 0.1); 
+}

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mines</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <h1
+        style="text-align: center; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color: aliceblue;">
+        Mines</h1>
+
+    <div style="text-align: center; color: aliceblue; margin-bottom: 20px;">
+        <label for="betAmount">Enter your bet amount: </label>
+
+        <input type="number" id="betAmount" placeholder="Bet Amount" style="margin-right: 10px;">
+
+        <button id="startGame">Start Game</button>
+        
+    </div>
+
+    <div id="profitDisplay" style="text-align: center; color: aliceblue; font-size: 20px; margin-bottom: 20px;">
+        Profit: $0
+    </div>
+
+    <div class="container">
+        <!-- Ensure the grid has exactly 25 tiles -->
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+
+</body>
+<script>
+    const multipliers = [
+        1.04, 1.09, 1.15, 1.22, 1.30, 1.39, 1.50, 1.62, 1.75,
+        1.90, 2.07, 2.25, 2.45, 2.67, 2.91, 3.18, 3.47, 3.79,
+        4.13, 4.51, 4.91, 5.35, 5.81, 6.31
+    ];
+
+    let currentMultiplierIndex = 0;
+    let betAmount = 0;
+
+    const multiplierDisplay = document.createElement('div');
+
+    multiplierDisplay.style.textAlign = 'center';
+
+    multiplierDisplay.style.color = 'aliceblue';
+
+    multiplierDisplay.style.fontSize = '20px';
+
+    multiplierDisplay.textContent = `Multiplier: ${multipliers[currentMultiplierIndex]}`;
+
+    document.body.insertBefore(multiplierDisplay, document.body.firstChild);
+
+    const profitDisplay = document.getElementById('profitDisplay');
+
+    function initializeGame() {
+        // Generate a random mine index
+        const mineIndex = Math.floor(Math.random() * 24);
+
+        console.log("Mine Index:", mineIndex); // For debugging purposes
+
+        // Add event listeners to tiles
+        const tiles = document.querySelectorAll('.container div');
+
+        tiles.forEach((tile, index) => {
+
+            tile.addEventListener('click', () => handleTileClick(index, mineIndex));
+
+        });
+    }
+
+    function handleTileClick(clickedIndex, mineIndex) {
+
+        const tiles = document.querySelectorAll('.container div');
+
+        if (clickedIndex === mineIndex) {
+
+            tiles[clickedIndex].style.backgroundColor = 'red';
+            // Highlight the mine
+            alert("Game Over!");
+
+            profitDisplay.textContent = `Profit: $0`;
+            // Reset profit on game over
+
+            // Reset all tiles to their original state
+            tiles.forEach(tile => {
+
+                tile.style.backgroundColor = '';
+                // Reset background color
+                tile.innerHTML = '';
+                // Clear any content inside the tile
+            });
+
+
+        } else {
+            tiles[clickedIndex].style.backgroundColor = 'green';
+            // Mark safe tile
+            if (currentMultiplierIndex < multipliers.length - 1) {
+
+                currentMultiplierIndex++;
+
+                multiplierDisplay.textContent = `Multiplier: ${multipliers[currentMultiplierIndex]}`;
+
+                const profit = (betAmount * multipliers[currentMultiplierIndex]).toFixed(2);
+
+                profitDisplay.textContent = `Profit: $${profit}`;
+            }
+        }
+    }
+    document.getElementById('startGame').addEventListener('click', () => {
+
+        const betInput = document.getElementById('betAmount').value;
+
+        if (betInput && betInput > 0) {
+
+            betAmount = parseFloat(betInput);
+
+            currentMultiplierIndex = 0; // Reset multiplier
+
+            multiplierDisplay.textContent = `Multiplier: ${multipliers[currentMultiplierIndex]}`;
+
+            profitDisplay.textContent = `Profit: $0`;
+
+            initializeGame();
+
+        } else {
+            alert("Please enter a valid bet amount!");
+        }
+    });
+</script>
+
+</html>
