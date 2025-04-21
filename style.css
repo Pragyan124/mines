@@ -130,3 +130,25 @@ input[type="number"]:focus {
     text-align: center;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5), -2px -2px 5px rgba(255, 255, 255, 0.1); 
 }
+
+/* Add shake animation for tiles */
+.shake {
+    animation: shake 0.5s;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+}
+
+/* Add click animation for safe tiles */
+.safe-tile {
+    animation: safeClick 0.3s ease-in-out;
+}
+
+@keyframes safeClick {
+    0% { transform: scale(1); background-color: #1bbd0f; }
+    50% { transform: scale(1.1); background-color: #28d17c; }
+    100% { transform: scale(1); background-color: #1bbd0f; }
+}
