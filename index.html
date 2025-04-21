@@ -79,6 +79,18 @@
     let currentMultiplierIndex = 0;
     let betAmount = 0;
 
+    const multiplierDisplay = document.createElement('div');
+
+    multiplierDisplay.style.textAlign = 'center';
+
+    multiplierDisplay.style.color = 'aliceblue';
+
+    multiplierDisplay.style.fontSize = '20px';
+
+    multiplierDisplay.textContent = `Multiplier: ${multipliers[currentMultiplierIndex]}`;
+
+    //document.body.insertBefore(multiplierDisplay, document.body.firstChild);
+
     
 
     const profitDisplay = document.getElementById('profitDisplay');
