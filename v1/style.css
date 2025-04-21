@@ -2,12 +2,97 @@ body{
     background-color: #1E2A38;
 }
 
+.h1{
+    color: rgb(220, 218, 218);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 50px;
+    text-align: center;
+    margin-top: 20px;
+}
+#betAmount{
+    background-color: #344658;
+    color: white;
+    width: 400px;
+    height: 50px;
+    margin: 20px;
+    padding: 5px;
+    border-radius: 5px;
+    margin-left: 50px;
+    font-size: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+
+.hello{
+    position: absolute;
+    
+    border: 2px solid rgb(33, 235, 83);
+    display: flex;
+    flex-direction: row;
+    width: 500px;
+    margin-left: 50px;
+    margin-right: 0px;
+    background-color: #1E2A38;
+    border: 10px solid #1bbd0f;
+    border-radius: 10px;
+
+}
 
 #startGame{
-    background-color: green;
+    background-color: #1bbd0f;
+    position: relative;
     color: white;
     padding:5px;
+    width: 400px;
+    height: 50px;
+    margin-left: 38px;
+    font-size: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 
+
+
+}
+
+/* Style the up and down arrows in input type="number" */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none; /* Remove default styling */
+    appearance: none;
+    margin: 0;
+}
+
+/* Add custom styling for the input */
+input[type="number"] {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+    width: 100px;
+}
+
+/* Optional: Add hover or focus effects */
+input[type="number"]:hover {
+    border-color: #1bbd0f;
+}
+
+input[type="number"]:focus {
+    outline: none;
+    border-color: #1bbd0f;
+    box-shadow: 0 0 5px rgba(27, 189, 15, 0.5);
+}
+
+#profitDisplay{
+   
+    margin-top: 300px;
+    margin-left: -290px;
+    color:antiquewhite;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 30px;
+    justify-content: center;
+    text-align: center;
+    
+    
+    
 }
 
 .container{
