@@ -23,6 +23,8 @@
 
         <button id="startGame">Start Game</button>
 
+        <button id ="cashOut">Cash Out</button>
+
     </div>
 
     <div id="profitDisplay" style="text-align: center;  display: flex;">
@@ -67,6 +69,7 @@
 </div>
 </body>
 <script>
+
     const multipliers = [
         1.04, 1.09, 1.15, 1.22, 1.30, 1.39, 1.50, 1.62, 1.75,
         1.90, 2.07, 2.25, 2.45, 2.67, 2.91, 3.18, 3.47, 3.79,
@@ -76,17 +79,7 @@
     let currentMultiplierIndex = 0;
     let betAmount = 0;
 
-    const multiplierDisplay = document.createElement('div');
-
-    multiplierDisplay.style.textAlign = 'center';
-
-    multiplierDisplay.style.color = 'aliceblue';
-
-    multiplierDisplay.style.fontSize = '20px';
-
-    multiplierDisplay.textContent = `Multiplier: ${multipliers[currentMultiplierIndex]}`;
-
-    //document.body.insertBefore(multiplierDisplay, document.body.firstChild);
+    
 
     const profitDisplay = document.getElementById('profitDisplay');
 
@@ -94,7 +87,7 @@
         // Generate a random mine index
         const mineIndex = Math.floor(Math.random() * 24);
 
-        console.log("Mine Index:", mineIndex); // For debugging purposes
+       // console.log("Mine Index:", mineIndex); // For debugging purposes
 
         // Add event listeners to tiles
         const tiles = document.querySelectorAll('.container div');
@@ -164,6 +157,45 @@
             alert("Please enter a valid bet amount!");
         }
     });
+
+
+
+
+
+
+    // Function to handle cash out
+function handleCashOut() {
+    if (betAmount > 0 && currentMultiplierIndex >= 0) {
+        const profit = (betAmount * multipliers[currentMultiplierIndex]).toFixed(2);
+        alert(`You cashed out with a profit of $${profit}!`);
+        profitDisplay.textContent = `Profit: $${profit}`;
+        
+        // Reset the game after cashing out
+        resetGame();
+    } else {
+        alert("You need to start the game and place a bet first!");
+    }
+}
+
+// Function to reset the game
+function resetGame() {
+    const tiles = document.querySelectorAll('.container div');
+    tiles.forEach(tile => {
+        tile.style.backgroundColor = ''; // Reset background color
+        tile.innerHTML = ''; // Clear any content inside the tile
+    });
+    currentMultiplierIndex = 0;
+    betAmount = 0;
+    multiplierDisplay.textContent = `Multiplier: ${multipliers[currentMultiplierIndex]}`;
+    profitDisplay.textContent = `Profit: $0`;
+}
+
+// Add event listener to the Cash Out button
+document.getElementById('cashOut').addEventListener('click', handleCashOut);
+
+
+
+   
 </script>
 
 </html>

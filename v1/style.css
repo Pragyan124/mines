@@ -23,6 +23,7 @@ body{
 }
 
 
+
 .hello{
     position: absolute;
     
@@ -52,6 +53,20 @@ body{
 
 
 }
+
+#cashOut{
+    background-color: #1bbd0f;
+    position: relative;
+    color: white;
+    padding:5px;
+    width: 400px;
+    height: 50px;
+    margin-top: 12px;
+    margin-left: 38px;
+    font-size: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
 
 /* Style the up and down arrows in input type="number" */
 input[type="number"]::-webkit-inner-spin-button,
