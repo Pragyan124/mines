@@ -94,11 +94,6 @@ const cashOutSound = new Audio('cashout.wav'); // Sound for cash out
     multiplierDisplay.textContent = `Multiplier: ${multipliers[currentMultiplierIndex]}`;
 
     //document.body.insertBefore(multiplierDisplay, document.body.firstChild);
-<<<<<<< HEAD
-=======
-
-    
->>>>>>> bc6789e37e1fae0119acf074f267f32be276a664
 
     const profitDisplay = document.getElementById('profitDisplay');
 
@@ -139,7 +134,7 @@ const cashOutSound = new Audio('cashout.wav'); // Sound for cash out
             currentMultiplierIndex++;
             multiplierDisplay.textContent = `Multiplier: ${multipliers[currentMultiplierIndex]}`;
             const profit = (betAmount * multipliers[currentMultiplierIndex]).toFixed(2);
-            profitDisplay.textContent = `Profit: Rs.${profit}`;
+            profitDisplay.textContent = `Profit: $.${profit}`;
         }
     }
 }
